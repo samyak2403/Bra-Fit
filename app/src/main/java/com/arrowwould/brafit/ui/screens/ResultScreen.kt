@@ -9,6 +9,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -128,22 +129,33 @@ fun ResultScreen(
             }
 
             item {
-                // Add image display
-                Image(
-                    painter = painterResource(id = result.braImageRes),
-                    contentDescription = "Recommended bra style",
+                Card(
                     modifier = Modifier
-                        .size(200.dp)
+                        .fillMaxWidth()
                         .padding(16.dp),
-                    contentScale = ContentScale.Fit
-                )
-                
-                Text(
-                    text = result.description,
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.padding(horizontal = 16.dp)
-                )
+                    elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+                ) {
+                    Column(
+                        modifier = Modifier.padding(16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Image(
+                            painter = painterResource(id = result.braImageRes),
+                            contentDescription = "Recommended bra style",
+                            modifier = Modifier
+                                .size(240.dp)
+                                .padding(16.dp),
+                            contentScale = ContentScale.Fit
+                        )
+                        
+                        Text(
+                            text = result.description,
+                            style = MaterialTheme.typography.bodyLarge,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(horizontal = 16.dp)
+                        )
+                    }
+                }
             }
 
             item {
