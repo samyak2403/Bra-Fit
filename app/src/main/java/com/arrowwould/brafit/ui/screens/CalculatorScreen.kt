@@ -40,14 +40,37 @@ fun CalculatorScreen(
             .padding(24.dp),
         horizontalAlignment = Alignment.Start
     ) {
-        Text(
-            text = "Bra Size Calculator",
-            style = MaterialTheme.typography.headlineMedium.copy(
-                fontWeight = FontWeight.Bold,
-                color = Color.Black
-            ),
-            modifier = Modifier.padding(bottom = 16.dp)
-        )
+        // Add top bar with title and guide icon
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Bra Size Calculator",
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+            )
+            
+            // Add guide icon button
+            IconButton(
+                onClick = onShowMeasurementGuide,
+                modifier = Modifier
+                    .size(48.dp)
+                    .padding(4.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Filled.Info,
+                    contentDescription = "Measurement Guide",
+                    tint = Color(0xFFE91E63),
+                    modifier = Modifier.size(32.dp)
+                )
+            }
+        }
 
         Row(
             modifier = Modifier.fillMaxWidth(),
